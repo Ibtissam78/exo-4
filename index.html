@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      text-align: center;
+      color: #F4B400;
+      text-shadow: 2px 2px 4px #000000;
+      background-color: #FFF5EE;
+      padding: 20px;
+      border: 10px solid #F4B400;
+      border-radius: 20px;
+      box-shadow: 0px 0px 10px #000000;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="customTitle">Hello World</h1>
+  <input type="text">
+  <button id="emojiButton">❤️</button>
+  <p id="status"></p>
+
+  <script>
+    const photo = (selector) => {
+      const element = document.querySelector(selector);
+      const obj = {
+        html: (text) => {
+          element.innerHTML = text;
+          return this;
+        },
+        color: (color) => {
+          element.style.color = color;
+          return this;
+        },
+        text: (text) => {
+          element.textContent = text;
+          return this;
+        },
+        button: (emoji) => {
+          element.textContent = emoji;
+          return this;
+        },
+      };
+      return obj;
+    };
+
+    // Handle button click event
+    document.getElementById('emojiButton').addEventListener('click', () => {
+      const titleSelector = '#customTitle'; // Replace with your title selector
+      document.getElementById('status').textContent = 'Click on emoji button';
+    });
+
+    // Change emoji automatically every two seconds
+    function changeEmoji() {
+      const button = document.getElementById('emojiButton');
+      let currentEmoji = button.textContent;
+      if (currentEmoji === '❤️') {
+        button.textContent = '👍';
+      } else {
+        button.textContent = '❤️';
+      }
+    }
+
+    setInterval(changeEmoji, 2000);
+
+    // Enable the button
+    document.getElementById('emojiButton').disabled = false;
+
+    photo('h1')
+      .html('Hello World')
+      .color('red');
+
+      $('h1')
+  .on('click', () => {
+    // Définit le contenu textuel de l'élément h1 sur "hello facade"
+    $('h1')
+      .html('hello facade');
+
+    // Applique le style personnalisé à l'élément h1
+    $('h1')
+      .css({
+        background: 'goldenrod',
+        color: 'white',
+        fontSize: '3rem',
+        fontFamily: 'Dancing Script',
+        textShadow: '2px 2px 4px #000000',
+        background: '#FFF5EE',
+        padding: '20px',
+        border: '10px solid #F4B400',
+        borderRadius: '20px',
+        boxShadow: '0px 0px 10px #000000',
+      });
+
+    // Ajoute un élément h2 à l'intérieur du gestionnaire d'événements de clic
+    $('h1')
+      .append('<h2 style="color: red; font-size: 2rem; fontFamily: Arial;">Façade</h2>');
+  });
+
+  </script>
+</body>
+</html>
